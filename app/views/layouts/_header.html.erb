@@ -1,0 +1,46 @@
+<header data-controller="header" class="bg-slate-800">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div class="relative h-16 flex justify-between nav-container">
+            <div class="relative z-10 px-2 flex lg:px-0">
+                 <div class="flex-shrink-0 flex items-center">
+                    <%= link_to root_path, class: "logo-link flex items-center focus:underline" do %>
+                        <%= inline_svg_tag('schueco_logo.svg', class: 'h-6 w-30') %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 invisible md:visible">
+                <button type="button" class="p-1 rounded-full text-gray-400 hover:text-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-300">
+                    <span class="sr-only">View cart</span>
+                    <%= inline_svg_tag('cart_icon.svg', class: 'h-6 w-6') %>
+                </button>
+                <div class="ml-3 relative">
+                    <div data-header-target="openMenu" class="relative z-10 flex items-center">
+                        <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-teal-300">
+                        <span class="sr-only">Open menu</span>
+                        <%= inline_svg_tag('burger_icon.svg', class: 'block h-8 w-8') %>
+                    </div>
+                    <div 
+                        class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-slate-200 z-20" 
+                        id="menu-dropdown-items"
+                        role="menu" 
+                        aria-orientation="vertical" 
+                        aria-labelledby="menu-button" 
+                        tabindex="-1"
+                        data-transition-enter="transition ease-out duration-100"
+                        data-transition-enter-start="transform opacity-0 scale-95"
+                        data-transition-enter-end="transform opacity-100 scale-100"
+                        data-transition-leave="transition ease-in duration-75"
+                        data-transition-leave-start="transform opacity-100 scale-100"
+                        data-transition-leave-end="transform opacity-0 scale-95"
+                    >                        
+                        <div class="py-1 text-sm text-gray-700" role="none">
+                            <%= link_to "Favourites", root_path, class: "block px-4 py-2 hover:bg-gray-100", id: "menu-item-0" %>
+                            <%= link_to "Cart", root_path, class: "block px-4 py-2 hover:bg-gray-100", id: "menu-item-1" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
