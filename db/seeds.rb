@@ -9,6 +9,7 @@
     width: Faker::Number.decimal(l_digits: 2, r_digits: 1),
     application: 'Residential projects, Commercial projects',
     water_tightness: "Class #{Faker::Number.number(digits: 1)}A",
-    burglar_resistance: "Up to RC#{Faker::Number.number(digits: 1)}"
+    burglar_resistance: "Up to RC#{Faker::Number.number(digits: 1)}",
+    price: Money.from_amount((10000..50000).to_a.sample)
   )
 end
