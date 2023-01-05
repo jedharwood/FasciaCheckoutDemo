@@ -6,7 +6,8 @@ RSpec.describe 'Homes', type: :request do
   before(:example, populate_materials: true) do
     @materials = []
     3.times do |i|
-      @materials << Material.create(name: "Material #{i}", description: "Material #{i} description", thickness: i, width: i)
+      @materials << Material.create(name: "Material #{i}", description: "Material #{i} description", thickness: i,
+                                    width: i)
     end
     @materials.sort_by { :name }
   end
