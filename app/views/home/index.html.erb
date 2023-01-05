@@ -1,1 +1,40 @@
-<p>index</p>
+<div class="container mx-auto p-8">
+    <h2 class="pb-2">Materials/Door trim</h2>
+    <ul role="list" class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+        <% @materials.each do |material| %>
+            <li class="relative">
+                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500 overflow-hidden  hover:opacity-75">
+                    <img src="https://www.onthisday.com/images/people/homer-simpson-medium.jpg">
+                    <button type="button" class="absolute inset-0 focus:outline-none">
+                        <span class="sr-only">View details</span>
+                    </button>
+                </div>
+                <h4 class="mt-2 block font-medium text-gray-900 truncate pointer-events-none"><%= material.name %></h4>
+                <table class="text-sm pointer-default w-full">
+                    <tbody>
+                        <tr class="border-b hover:bg-gray-100 whitespace-nowrap">
+                            <td class="text-gray-500">Thickness: </td>
+                            <td><%= material.thickness %></td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-100 whitespace-nowrap">
+                            <td class="text-gray-500">Width: </td>
+                            <td><%= material.width %></td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-100">
+                            <td class="text-gray-500">Water tightness: </td>
+                            <td><%= material.water_tightness %></td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-100">
+                            <td class="text-gray-500">Burglar resistance: </td>
+                            <td><%= material.burglar_resistance %></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td><%= material.application %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
