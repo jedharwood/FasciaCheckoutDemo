@@ -4,7 +4,7 @@
         <% @materials.each do |material| %>
             <li class="relative">
                 <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500 overflow-hidden  hover:opacity-75">
-                    <img src="https://www.onthisday.com/images/people/homer-simpson-medium.jpg">
+                    <%= image_tag material.image, class: "object-cover pointer-events-none group-hover:opacity-75" %>
                     <button type="button" class="absolute inset-0 focus:outline-none">
                         <span class="sr-only">View details</span>
                     </button>
@@ -30,6 +30,9 @@
                         </tr>
                         <tr class="hover:bg-gray-100">
                             <td><%= material.application %></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td><%= humanized_money_with_symbol(material.price) %>p/m</td>
                         </tr>
                     </tbody>
                 </table>
