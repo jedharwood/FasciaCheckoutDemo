@@ -10,8 +10,9 @@
     application: 'Residential projects, Commercial projects',
     water_tightness: "Class #{Faker::Number.number(digits: 1)}A",
     burglar_resistance: "Up to RC#{Faker::Number.number(digits: 1)}",
-    price: Money.from_amount((10000..50000).to_a.sample)
+    price: Money.from_amount((10_000..50_000).to_a.sample)
   )
 
-  material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', "door_trim_#{i}.webp")), filename: material.name)
+  material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', "door_trim_#{i}.webp")),
+                        filename: material.name)
 end

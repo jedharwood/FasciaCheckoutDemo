@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Material < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
