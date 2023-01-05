@@ -1,7 +1,8 @@
 class Material < ApplicationRecord
-    validates :name, presence: true
-    validates :description, presence: true
-    validates :thickness, presence: true
-    validates :width, presence: true
-end
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :thickness, presence: true
+  validates :width, presence: true
 
+  monetize :price_cents, allow_nil: true
+end

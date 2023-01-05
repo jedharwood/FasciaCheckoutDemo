@@ -7,4 +7,6 @@ RSpec.describe Material, type: :model do
     it { should validate_presence_of(:thickness) }
     it { should validate_presence_of(:width) }
   end
+
+  it { is_expected.to monetize(:price).allow_nil }
 end
