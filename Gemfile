@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'image_processing', '~> 1.2' # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'importmap-rails' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'inline_svg' # Save reference saved SVG files as assets
 gem 'jbuilder' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -22,8 +23,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby] # Windows does not
 # gem "kredis"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
 
 group :test do
   gem 'rails-controller-testing' # Expose methods for testing controller actions
