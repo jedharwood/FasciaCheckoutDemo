@@ -25,6 +25,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby] # Windows does not
 # gem "bcrypt", "~> 3.1.7"
 
 group :test do
+  gem "database_cleaner" # Clear test db between test runs
   gem 'rails-controller-testing' # Expose methods for testing controller actions
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', require: false # Test coverage
