@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: f54db334a271b22121e54de77a3a231b5f3c4ca9
+  branch: master
+  specs:
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -216,6 +224,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -259,6 +269,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  faker!
   importmap-rails
   inline_svg
   jbuilder
@@ -271,6 +282,7 @@ DEPENDENCIES
   rspec-rails (~> 5.1, >= 5.1.2)
   rubocop
   sassc-rails
+  shoulda-matchers (~> 5.0)
   simplecov
   sprockets-rails
   stimulus-rails

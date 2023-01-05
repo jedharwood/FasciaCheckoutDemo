@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+10.times do |i|
+    material = Material.create!(
+        name: "Aluminium door trim BF9#{i}",
+        description: Faker::Lorem.unique.paragraphs(number: 30).join(" "),
+        max_unit_length: 3,
+        thickness: Faker::Number.decimal(l_digits: 2, r_digits: 1),
+        width: Faker::Number.decimal(l_digits: 2, r_digits: 1),
+        application: 'Residential projects, Commercial projects',
+        water_tightness: "Class #{Faker::Number.number(digits: 1)}A",
+        burglar_resistance: "Up to RC#{Faker::Number.number(digits: 1)}",
+    )
+end

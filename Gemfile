@@ -26,12 +26,14 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby] # Windows does not
 
 group :test do
   gem 'rails-controller-testing' # Expose methods for testing controller actions
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', require: false # Test coverage
 end
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master' # Dummy values for testing/development
   gem 'pry-byebug' # Debugging breakpoints
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2' # gem "rspec-rails", "~> 6.0.0"
   gem 'rubocop' # Ruby linter
