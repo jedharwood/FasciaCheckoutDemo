@@ -4,17 +4,13 @@ require 'rails_helper'
 
 RSpec.describe HomeHelper, type: :helper do
   before(:example, populate_material: true) do
-    @material = Material.create(name: 'Test material', description: 'Test material description', thickness: 1.1,
-                                width: 2.2)
-    @material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', 'door_trim_0.webp')),
-                           filename: @material.name)
+    materials = instantiate_material_list(1)
+    @material = materials[0]
   end
 
   before(:example, populate_material_with_favourite: true) do
-    @material = Material.create(name: 'Test material', description: 'Test material description', thickness: 1.1,
-                               width: 2.2)
-    @material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', 'door_trim_0.webp')),
-                          filename: @material.name)
+    materials = instantiate_material_list(1)
+    @material = materials[0]
     @favourite = Favourite.create(material_id: @material.id)
   end
 

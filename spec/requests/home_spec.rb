@@ -4,15 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Homes', type: :request do
   before(:example, populate_materials: true) do
-    @materials = []
-    3.times do |i|
-      material = Material.create!(name: "Material #{i}", description: "Material #{i} description", thickness: i,
-                                  width: i)
-      @materials << material
-      material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', "door_trim_#{i}.webp")),
-                            filename: material.name)
-    end
-    @materials.sort_by { :name }
+    @materials = instantiate_material_list(3)
   end
 
   describe 'GET /index' do
