@@ -11,4 +11,5 @@ RSpec.describe Material, type: :model do
   end
 
   it { is_expected.to monetize(:price).allow_nil }
+  it { should have_one(:favourite) }
 end
