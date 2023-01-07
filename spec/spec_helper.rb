@@ -90,3 +90,23 @@ RSpec.configure do |config|
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
 end
+
+def instantiate_material_list(number_of_materials)
+  materials = []
+  number_of_materials.times do |i|
+    material = Material.create!(name: "Material #{i}", description: "Material #{i} description", thickness: i,
+                                width: i)
+    materials << material
+    material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', "door_trim_#{i}.webp")),
+                          filename: material.name)
+  end
+  materials.sort_by { :name }
+end
+
+def instantiate_favourite_list(materials) 
+  favourites = []
+  materials.each do |material|
+    favourites << Favourite.create(material_id: material.id)
+  end
+  favourites
+end

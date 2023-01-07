@@ -8,6 +8,7 @@ gem 'image_processing', '~> 1.2' # Use Active Storage variants [https://guides.r
 gem 'importmap-rails' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'inline_svg' # Save reference saved SVG files as assets
 gem 'jbuilder' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem 'jsonapi-serializer'
 gem 'money-rails', '~>1.12' # Formatter for currency types
 gem 'pg', '~> 1.1' # Use postgresql as the database for Active Record
 gem 'puma', '~> 5.0' # Use the Puma web server [https://github.com/puma/puma]
@@ -25,6 +26,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby] # Windows does not
 # gem "bcrypt", "~> 3.1.7"
 
 group :test do
+  gem "database_cleaner" # Clear test db between test runs
   gem 'rails-controller-testing' # Expose methods for testing controller actions
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', require: false # Test coverage
