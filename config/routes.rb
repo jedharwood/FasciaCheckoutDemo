@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
 
   resources :favourites, only: :index
+  delete 'favourites.:id', to: 'favourites#destroy' # This route is wierd
 end
