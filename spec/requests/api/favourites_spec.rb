@@ -10,7 +10,8 @@ RSpec.describe 'Api::Favourites', type: :request do
 
   before(:example, populate_material_with_favourite: true) do
     materials = instantiate_material_list(1)
-    @favourite = Favourite.create(material_id: materials[0].id)
+    favourites = instantiate_favourite_list(materials)
+    @favourite = favourites[0]
   end
 
   let(:headers) do
