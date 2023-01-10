@@ -1,0 +1,55 @@
+<div class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-8 lg:pb-12 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+    <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+        <p class="mb-2">Product information</p>
+        <table class="pointer-default w-full">
+            <tbody>
+                <tr class="border-b hover:bg-gray-100 whitespace-nowrap">
+                    <td class="text-gray-500">Thickness: </td>
+                    <td class="text-right"><%= @material.thickness %></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100 whitespace-nowrap">
+                    <td class="text-gray-500">Width: </td>
+                    <td class="text-right"><%= @material.width %></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="text-gray-500">Water tightness: </td>
+                    <td class="text-right whitespace-nowrap"><%= @material.water_tightness %></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="text-gray-500">Burglar resistance: </td>
+                    <td class="text-right whitespace-nowrap"><%= @material.burglar_resistance %></td>
+                </tr>
+                <tr class="hover:bg-gray-100">
+                    <td class="text-gray-500">Applications: </td>
+                    <td class="text-right"><%= @material.application %></td>
+                </tr>
+                <tr class="hover:bg-gray-100">
+                    <td class="pt-2"><%= humanized_money_with_symbol(@material.price) %> per metre</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="py-10 lg:py-6 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+        <div>
+            <h3 class="sr-only">Description</h3>
+            <div 
+                data-controller="material"
+            >
+                <p class="text-base text-gray-900"><%= truncate @material.description, length: 500 %></p>
+
+                <% if @material.description.length > 500 %>
+                     <p 
+                        data-action="click->material#showModal"
+                        class="text-lg font-medium underline cursor-pointer text-teal-500 hover:text-teal-300" 
+                    >
+                        Show more >
+                    </p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
