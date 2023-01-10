@@ -1,0 +1,89 @@
+<div 
+    data-controller="material"
+    data-price-per-metre="<%= humanized_money(@material.price) %>"
+    class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-8 lg:pb-12 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8"
+>
+    <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+        <p class="mb-2">Product information</p>
+        <table class="pointer-default w-full">
+            <tbody>
+                <tr class="border-b hover:bg-gray-100 whitespace-nowrap">
+                    <td class="text-gray-500">Thickness: </td>
+                    <td class="text-right"><%= @material.thickness %></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100 whitespace-nowrap">
+                    <td class="text-gray-500">Width: </td>
+                    <td class="text-right"><%= @material.width %></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="text-gray-500">Water tightness: </td>
+                    <td class="text-right whitespace-nowrap"><%= @material.water_tightness %></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="text-gray-500">Burglar resistance: </td>
+                    <td class="text-right whitespace-nowrap"><%= @material.burglar_resistance %></td>
+                </tr>
+                <tr class="hover:bg-gray-100">
+                    <td class="text-gray-500">Applications: </td>
+                    <td class="text-right"><%= @material.application %></td>
+                </tr>
+                <tr class="hover:bg-gray-100">
+                    <td class="pt-2"><%= humanized_money_with_symbol(@material.price) %> per metre</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="py-10 lg:py-6 lg:col-start-1 lg:col-span-2 border-b lg:border-r lg:border-gray-200 lg:pr-8">
+        <div>
+            <h3 class="sr-only">Description</h3>
+            <div>
+                <p class="text-base text-gray-900"><%= truncate @material.description, length: 500 %></p>
+                <% if @material.description.length > 500 %>
+                     <p 
+                        data-action="click->material#showDescription"
+                        class="text-lg font-medium underline cursor-pointer text-teal-500 hover:text-teal-300" 
+                    >
+                        Show more >
+                    </p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 lg:mt-0 lg:row-span-3">
+        <div class="mt-10 lg:mt-0">
+            <h2 class="text-xl font-medium text-gray-900"><%= humanized_money_with_symbol(@material.price) %> per metre</h2>
+            <div class="isolate -space-y-px rounded-md shadow-sm mt-6">
+                <div class="relative border border-gray-300 rounded-md px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-teal-500 focus-within:border-teal-500">
+                    <label for="name" class="block text-xs font-medium text-gray-900 uppercase">Metres</label>
+                    <input 
+                        data-action="input->material#handleInputChange"
+                        data-material-target="lengthInput"
+                        type="number" 
+                        class="block w-full border-0 p-0 text-gray-900 focus:ring-0 sm:text-sm" 
+                    >
+                </div>
+            </div>
+            <div class="bg-white mt-6">
+                <div class="divide-y divide-gray-200"></div>
+                <dl class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <dt class="text-sm"><%= humanized_money_with_symbol(@material.price) %> x <span data-material-target="numberOfMetres">0</span>m</dt>
+                        <dd class="text-sm font-medium text-gray-900"><%= currency_symbol %><span data-material-target="materialCost">0</span></dd>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-gray-200 pt-6">
+                        <dt class="text-base">Total</dt>
+                        <dd class="text-base font-medium text-gray-900"><%= currency_symbol %><span data-material-target="materialTotal">0</span></dd>
+                    </div>
+                </dl>
+                <div class="pt-6">
+                    <button 
+                        data-submit-url="<%= root_path(@property) %>"
+                        type="submit" 
+                        class="w-full bg-teal-500 hover:bg-teal-300 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white focus:ring-offset-gray-50 focus:ring-teal-500">Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
