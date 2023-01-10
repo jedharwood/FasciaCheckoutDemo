@@ -1,31 +1,22 @@
 import { Controller } from '@hotwired/stimulus';
-import { enter, leave } from 'el-transition';
 
 export default class extends Controller {
-  static targets = ['closeButton'];
+  static targets = ['lengthInput', 'numberOfMetres', 'materialCost', 'materialTotal'];
 
-  connect() {
-    document.getElementById('modal-wrapper').addEventListener('click', (event) => {
-      const modalPanelClicked = document.getElementById('modal-panel').contains(event.target);
-      if (!modalPanelClicked) {
-        this.hideModal();
-      }
-    });
-
-    this.closeButtonTarget.addEventListener('click', () => {
-      this.hideModal();
-    });
+  showDescription(e) {
+    e.preventDefault();
+    document.getElementById('modal-trigger').click();
   }
 
-  showModal() {
-    enter(document.getElementById('modal-wrapper'));
-    enter(document.getElementById('modal-backdrop'));
-    enter(document.getElementById('modal-panel'));
+  handleInputChange() {
+    this.numberOfMetresTarget.textContent = this.lengthInputTarget.value;
+    this.materialCostTarget.textContent = this.calculateCost();
+    this.materialTotalTarget.textContent = this.calculateCost();
   }
 
-  hideModal() {
-    leave(document.getElementById('modal-wrapper'));
-    leave(document.getElementById('modal-backdrop'));
-    leave(document.getElementById('modal-panel'));
+  calculateCost() {
+    const length = this.lengthInputTarget.value;
+    const pricePerMetreInCents = parseFloat(this.element.dataset.pricePerMetre.replace(',', ''));
+    return length ? pricePerMetreInCents * parseInt(length) : 0;
   }
 }
