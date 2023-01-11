@@ -112,3 +112,11 @@ def instantiate_favourite_list(number_of_favourites)
   end
   favourites
 end
+
+def instantiate_basket_material_list(number_of_items_in_cart, materials)
+  basket_materials = []
+  3.times do |i| 
+      basket_materials << BasketMaterial.create(material_id: materials[0].id, length: 1)
+  end
+  basket_materials
+end

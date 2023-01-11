@@ -6,14 +6,10 @@ RSpec.describe BasketHelper, type: :helper do
   before(:example, populate_basket: true) do
     @material_price = 10
     @material_length = 1
-    @items_in_cart = 3
+    @number_of_items_in_basket = 3
 
     materials = instantiate_material_list(1, @material_price)
-    
-    @basket_materials = []
-    @items_in_cart.times do |i| 
-        @basket_materials << BasketMaterial.create(material_id: materials[0].id, length: @material_length)
-    end
+    @basket_materials = instantiate_basket_material_list(@number_of_items_in_basket, materials)
   end
 
   before(:example, empty_basket: true) do
@@ -30,7 +26,7 @@ RSpec.describe BasketHelper, type: :helper do
   describe 'calculate_basket_total' do
     context 'when basket is populated', populate_basket: true do
         it 'returns total of price * length for each material in the basket' do
-            expected = @items_in_cart * (Money.new(@material_price) * @material_length)
+            expected = @number_of_items_in_basket * (Money.new(@material_price) * @material_length)
             result = calculate_basket_total(@basket_materials)
             expect(result).to eq(expected)
         end
