@@ -5,6 +5,7 @@ class Material < ApplicationRecord
   validates :description, presence: true
   validates :thickness, presence: true, numericality: { greater_than: 0 }
   validates :width, presence: true, numericality: { greater_than: 0 }
+  validates :price, presence: true, numericality: { greater_than: 0 }
 
   monetize :price_cents, allow_nil: true
 
