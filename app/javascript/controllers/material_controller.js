@@ -50,7 +50,7 @@ export default class extends Controller {
       if (response.ok) {
         // emit event to checkout controller
         Swal.fire({
-          text: 'Material successfully added to cart',
+          text: 'Material successfully added to basket',
           icon: 'success',
           confirmButtonColor: '#14b8a6',
         });

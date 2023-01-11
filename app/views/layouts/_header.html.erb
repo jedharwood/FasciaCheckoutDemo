@@ -9,10 +9,10 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 invisible md:visible">
-                <button type="button" class="p-1 rounded-full p-2 text-gray-400 hover:text-teal-300 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-300">
-                    <span class="sr-only">View cart</span>
+                <%= link_to basket_index_path, class: "p-1 rounded-full p-2 text-gray-400 hover:text-teal-300 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-300" do %>
+                    <span class="sr-only">View basket</span>
                     <%= inline_svg_tag('cart_icon.svg', class: 'h-6 w-6') %>
-                </button>
+                <% end %>
                 <div class="ml-3 relative">
                     <div data-header-target="openMenu" class="relative z-10 flex items-center">
                         <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-teal-300">
@@ -35,7 +35,7 @@
                     >                        
                         <div class="py-1 text-sm text-gray-700" role="none">
                             <%= link_to "Favourites", favourites_path, class: "block px-4 py-2 hover:bg-gray-100", id: "menu-item-0" %>
-                            <%= link_to "Cart", root_path, class: "block px-4 py-2 hover:bg-gray-100", id: "menu-item-1" %>
+                            <%= link_to "Basket", basket_index_path, class: "block px-4 py-2 hover:bg-gray-100", id: "menu-item-1" %>
                         </div>
                     </div>
                 </div>
