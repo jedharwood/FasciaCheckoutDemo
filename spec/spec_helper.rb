@@ -94,8 +94,8 @@ end
 def instantiate_material_list(number_of_materials)
   materials = []
   number_of_materials.times do |i|
-    material = Material.create!(name: "Material #{i}", description: "Material #{i} description", thickness: i,
-                                width: i)
+    material = Material.create!(name: "Material #{i}", description: "Material #{i} description", thickness: i + 1,
+                                width: i + 1)
     materials << material
     material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', "door_trim_#{i}.webp")),
                           filename: material.name)
