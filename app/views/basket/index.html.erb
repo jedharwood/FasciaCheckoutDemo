@@ -1,4 +1,7 @@
-<div class="container mx-auto p-8">
+<div 
+    data-controller="basket"
+    class="container mx-auto p-8"
+>
     <h2 class="pb-2">Basket</h2>
     <div class="flex justify-center text-left"> 
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -33,7 +36,7 @@
                         </dl>
                         <div class="pt-6">
                             <button 
-                                data-action="click->material#addToBasket"
+                                data-action="click->basket#proceedToCheckout"
                                 class="w-full bg-teal-500 hover:bg-teal-300 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white focus:ring-offset-gray-50 focus:ring-teal-500"
                             >
                                 Complete purchase
