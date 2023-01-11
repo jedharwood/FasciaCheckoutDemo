@@ -104,7 +104,8 @@ def instantiate_material_list(number_of_materials, price = 1)
   materials.sort_by { :name }
 end
 
-def instantiate_favourite_list(materials) 
+def instantiate_favourite_list(number_of_favourites) 
+  materials = instantiate_material_list(number_of_favourites)
   favourites = []
   materials.each do |material|
     favourites << Favourite.create(material_id: material.id)
