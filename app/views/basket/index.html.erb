@@ -1,0 +1,50 @@
+<div class="container mx-auto p-8">
+    <h2 class="pb-2">Basket</h2>
+    <div class="flex justify-center text-left"> 
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <table>
+                        <tbody>
+                            <% @basket_materials.each do |basket_material| %>
+                                <tr class="border-b hover:bg-gray-100 whitespace-nowrap">
+                                    <td><%= image_tag basket_material.material.image, class: "h-12 w-12 rounded-sm" %></td>
+                                    <td class="p-4 text-teal-500 hover:text-teal-300 focus:underline"><%= link_to basket_material.material.name, material_path(basket_material.material) %></td>
+                                    <td class="p-4 font-normal text-center"><%= basket_material.length %>m</td>
+                                    <td class="p-4 font-normal text-center"><%= humanized_money_with_symbol(calculate_material_cost(basket_material.material.price, basket_material.length)) %></td>
+                                    <td class="px-2 py-4 text-teal-500 hover:text-teal-300 focus:underline delete-button">    
+                                        <%= button_to basket_index_path(basket_material), method: :delete do %>
+                                            <%= inline_svg_tag('delete_icon.svg', class: 'h-5 w-5') %>
+                                        <% end %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-2">
+                    <% if @basket_materials.count > 0 %>
+                        <div class="divide-y divide-gray-200"></div>
+                        <dl class="space-y-4">
+                            <div class="flex items-center justify-between pt-6">
+                                <dt class="text-base">Total</dt>
+                                <dd class="text-base font-medium text-gray-900"><%= humanized_money_with_symbol(calculate_basket_total(@basket_materials)) %></dd>
+                            </div>
+                        </dl>
+                        <div class="pt-6">
+                            <button 
+                                data-action="click->material#addToBasket"
+                                class="w-full bg-teal-500 hover:bg-teal-300 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white focus:ring-offset-gray-50 focus:ring-teal-500"
+                            >
+                                Complete purchase
+                            </button>
+                        </div>
+                    <% else %>
+                        <p>There are no items in your basket</p>
+                    <% end %>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
