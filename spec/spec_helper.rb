@@ -91,11 +91,12 @@ RSpec.configure do |config|
   #   Kernel.srand config.seed
 end
 
-def instantiate_material_list(number_of_materials)
+def instantiate_material_list(number_of_materials, price = 1)
   materials = []
   number_of_materials.times do |i|
-    material = Material.create!(name: "Material #{i}", description: "Material #{i} description", thickness: i,
-                                width: i)
+    material = Material.create!(name: "Material #{i}", description: "Material #{i} description", thickness: i + 1,
+      width: i + 1, price: Money.new(price))
+
     materials << material
     material.image.attach(io: File.open(Rails.root.join('db', 'sample', 'images', "door_trim_#{i}.webp")),
                           filename: material.name)
@@ -103,10 +104,19 @@ def instantiate_material_list(number_of_materials)
   materials.sort_by { :name }
 end
 
-def instantiate_favourite_list(materials) 
+def instantiate_favourite_list(number_of_favourites) 
+  materials = instantiate_material_list(number_of_favourites)
   favourites = []
   materials.each do |material|
     favourites << Favourite.create(material_id: material.id)
   end
   favourites
+end
+
+def instantiate_basket_material_list(number_of_items_in_basket, materials)
+  basket_materials = []
+  number_of_items_in_basket.times do |i| 
+      basket_materials << BasketMaterial.create(material_id: materials[0].id, length: 1)
+  end
+  basket_materials
 end
