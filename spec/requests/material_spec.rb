@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Materials", type: :request do
+RSpec.describe 'Materials', type: :request do
   before(:example, populate_materials: true) do
     materials = instantiate_material_list(2)
     @material = materials[0]

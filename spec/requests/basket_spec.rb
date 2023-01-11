@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Baskets", type: :request do
+RSpec.describe 'Baskets', type: :request do
   before(:example, populate_basket: true) do
     materials = instantiate_material_list(1)
     @basket_materials = instantiate_basket_material_list(3, materials)

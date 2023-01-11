@@ -17,26 +17,26 @@ RSpec.describe BasketHelper, type: :helper do
   end
 
   describe 'calculate_material_cost' do
-      it 'returns price * length' do
-        result = calculate_material_cost(10, 20)
-        expect(result).to eq(200)
-      end
+    it 'returns price * length' do
+      result = calculate_material_cost(10, 20)
+      expect(result).to eq(200)
+    end
   end
 
   describe 'calculate_basket_total' do
     context 'when basket is populated', populate_basket: true do
-        it 'returns total of price * length for each material in the basket' do
-            expected = @number_of_items_in_basket * (Money.new(@material_price) * @material_length)
-            result = calculate_basket_total(@basket_materials)
-            expect(result).to eq(expected)
-        end
+      it 'returns total of price * length for each material in the basket' do
+        expected = @number_of_items_in_basket * (Money.new(@material_price) * @material_length)
+        result = calculate_basket_total(@basket_materials)
+        expect(result).to eq(expected)
+      end
     end
-    
+
     context 'when basket is empty', empty_basket: true do
-        it 'returns 0' do
-            result = calculate_basket_total(@basket_materials)
-            expect(result).to eq(0)
-        end
+      it 'returns 0' do
+        result = calculate_basket_total(@basket_materials)
+        expect(result).to eq(0)
+      end
     end
   end
 end

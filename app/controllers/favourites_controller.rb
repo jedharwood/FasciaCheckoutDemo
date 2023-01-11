@@ -10,10 +10,10 @@ class FavouritesController < ApplicationController
     favourite.destroy
 
     respond_to do |format|
-        format.html do
-          flash[:success] = "#{favourite.material.name} removed from favourites"
-          redirect_to favourites_path
-        end
+      format.html do
+        flash[:success] = "#{favourite.material.name} removed from favourites"
+        redirect_to favourites_path
       end
+    end
   end
 end
