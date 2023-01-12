@@ -16,7 +16,8 @@ PostgreSQL 14.5
 
 * Configuration
 
-Run `$ bundle`
+Clone the repo and run `$ bundle` to install packages
+
 * Database creation
 
 * Database initialization
