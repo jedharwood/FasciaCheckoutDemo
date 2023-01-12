@@ -28,8 +28,8 @@
                 data-transition-leave="ease-in duration-200"
                 data-transition-leave-start="opacity-100 translate-y-0 sm:scale-100"
                 data-transition-leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                data-action="show-description-modal@window->modal#showModal"
             >
-                <div id="modal-trigger" data-action="click->modal#showModal"><div>
                 <div class="flex mb-5">
                     <div class="flex-none cursor-pointer text-gray-500" data-modal-target="closeButton">
                         <%= inline_svg_tag('close_icon.svg', class: 'h-5 w-5') %>

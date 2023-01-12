@@ -15,7 +15,7 @@ module BasketHelper
 
   def basket_populated?
     count = BasketMaterial.all.count
-    count < 1 ? false : true
+    !(count < 1)
   end
 
   def number_of_items_in_basket
