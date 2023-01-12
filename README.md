@@ -30,3 +30,8 @@ Ensure Postgres is running and run the command `$ bundle exec rails db:create`
 
 `$ bundle exec rspec`
 
+* How to run the project
+
+`$ bundle exec rails s` or `$ ./bin/dev\`
+Navigate to `http://localhost:3000/` 
+
