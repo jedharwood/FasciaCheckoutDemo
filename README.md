@@ -11,7 +11,7 @@ Clicking an item's image on the home page will direct a user to the item's infor
 Ruby 3.1.2 & Rails 7.0.4
 
 * System dependencies
-* 
+
 PostgreSQL 14.5
 
 * Configuration
@@ -19,6 +19,8 @@ PostgreSQL 14.5
 Clone the repo and run `$ bundle` to install packages
 
 * Database creation
+
+Ensure Postgres is running and run the command `$ bundle exec rails db:create`
 
 * Database initialization
 
