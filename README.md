@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a small demo e-commerce app using Rails 7, Stimulus and Tailwind. 
 
-Things you may want to cover:
+From the home page a user can add an item to a list of favourites via a js action by clicking the star icon in the corner of that item's image. The favourites list can be accessed via the dropdown menu from the burger icon.
+
+Clicking an item's image on the home page will direct a user to the item's information page. From here a quantity of the item can be added to the shopping cart via a js action. Additional js actions will also update the colour and number of the shopping cart icon in the header.
 
 * Ruby version
+Ruby 3.1.2 & Rails 7.0.4
 
 * System dependencies
+PostgreSQL 14.5
 
 * Configuration
-
+$ bundle
 * Database creation
 
 * Database initialization
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
