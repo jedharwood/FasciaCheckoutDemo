@@ -33,5 +33,6 @@ Ensure Postgres is running and run the command `$ bundle exec rails db:create`
 * How to run the project
 
 `$ bundle exec rails s` or `$ ./bin/dev\`
+
 Navigate to `http://localhost:3000/` 
 
