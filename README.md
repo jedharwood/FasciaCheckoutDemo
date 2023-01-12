@@ -24,5 +24,9 @@ Ensure Postgres is running and run the command `$ bundle exec rails db:create`
 
 * Database initialization
 
+`$ bundle exec rails db:seed`
+
 * How to run the test suite
+
+`$ bundle exec rspec`
 
