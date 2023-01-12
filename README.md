@@ -11,10 +11,12 @@ Clicking an item's image on the home page will direct a user to the item's infor
 Ruby 3.1.2 & Rails 7.0.4
 
 * System dependencies
+* 
 PostgreSQL 14.5
 
 * Configuration
-$ bundle
+
+Run `$ bundle`
 * Database creation
 
 * Database initialization
