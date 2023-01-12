@@ -7,8 +7,8 @@ export default class extends Controller {
   BASKET_PATH = '/api/basket';
 
   showDescription(e) {
-    e.preventDefault();
-    document.getElementById('modal-trigger').click();
+    const event = new CustomEvent("show-description-modal");
+    window.dispatchEvent(event);
   }
 
   handleInputChange() {
