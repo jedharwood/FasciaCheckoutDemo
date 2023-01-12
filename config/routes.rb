@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :favourites, only: %i[create destroy]
     resources :basket, only: :create
+    get 'basket/basket_material_count', to: 'basket#basket_material_count'
   end
 
   resources :favourites, only: :index

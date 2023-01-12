@@ -14,6 +14,16 @@ module Api
       end
     end
 
+    def basket_material_count
+      count = BasketMaterial.all.count
+      binding.pry
+      respond_to do |format|
+        format.json do
+          render json: count.to_json, status: :found
+        end
+      end
+    end
+
     private
 
     def basket_material_params
