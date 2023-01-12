@@ -7,6 +7,7 @@ From the home page a user can add an item to a list of favourites via a js actio
 Clicking an item's image on the home page will direct a user to the item's information page. From here a quantity of the item can be added to the shopping cart via a js action. Additional js actions will also update the colour and number of the shopping cart icon in the header.
 
 * Ruby version
+
 Ruby 3.1.2 & Rails 7.0.4
 
 * System dependencies
