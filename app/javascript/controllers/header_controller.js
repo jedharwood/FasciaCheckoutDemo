@@ -11,4 +11,26 @@ export default class extends Controller {
   toggleDropDownMenu() {
     toggle(document.getElementById('menu-dropdown-items'));
   }
+
+  updateBasketIcon() {
+    fetch('/api/basket/basket_material_count')
+      .then(response => response.json())
+      .then(count => {
+        if (count > 0) {
+          this.setTrolleyIconColour();
+          this.setTrolleyCounter(count);
+        }
+      }
+    );
+  }
+
+  setTrolleyIconColour() {
+    const trolleyIcon = document.getElementById('trolley-icon');
+    trolleyIcon.setAttribute('fill', trolleyIcon.dataset.populatedColour);
+  }
+
+  setTrolleyCounter(count) {
+    const trolleyCounter = document.getElementById('trolley-counter');
+    trolleyCounter.textContent = count;
+  }
 }
