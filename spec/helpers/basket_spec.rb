@@ -39,4 +39,36 @@ RSpec.describe BasketHelper, type: :helper do
       end
     end
   end
+
+  describe 'basket_populated?' do
+    context 'when basket is populated', populate_basket: true do
+      it 'returns true' do
+        result = basket_populated?
+        expect(result).to eq(true)
+      end
+    end
+
+    context 'when basket is empty', empty_basket: true do
+      it 'returns false' do
+        result = basket_populated?
+        expect(result).to eq(false)
+      end
+    end
+  end
+
+  describe 'number_of_items_in_basket' do
+    context 'when basket is populated', populate_basket: true do
+      it 'returns total number of materials in the basket' do
+        result = number_of_items_in_basket
+        expect(result).to eq(@number_of_items_in_basket)
+      end
+    end
+
+    context 'when basket is empty', empty_basket: true do
+      it 'returns 0' do
+        result = number_of_items_in_basket
+        expect(result).to eq(0)
+      end
+    end
+  end
 end
