@@ -16,7 +16,7 @@ module Api
 
     def basket_material_count
       count = BasketMaterial.all.count
-      binding.pry
+
       respond_to do |format|
         format.json do
           render json: count.to_json, status: :found

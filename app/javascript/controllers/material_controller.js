@@ -48,7 +48,9 @@ export default class extends Controller {
     })
     .then(response => {
       if (response.ok) {
-        // emit event to checkout controller
+        const event = new CustomEvent("update-cart-icon");
+        window.dispatchEvent(event);
+
         Swal.fire({
           text: 'Material successfully added to basket',
           icon: 'success',

@@ -1,4 +1,7 @@
-<header data-controller="header" class="bg-slate-800">
+<header 
+    data-controller="header" 
+    class="bg-slate-800"
+>
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div class="relative h-16 flex justify-between nav-container">
             <div class="relative z-10 px-2 flex lg:px-0">
@@ -8,14 +11,32 @@
                     <% end %>
                 </div>
             </div>
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 invisible md:visible">
-                <%= link_to basket_index_path, class: "p-1 rounded-full p-2 text-gray-400 hover:text-teal-300 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-300" do %>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 invisible md:visible text-gray-400">
+                <%= link_to basket_index_path, class: "p-1 rounded-full p-2 hover:text-teal-300 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-300" do %>
                     <span class="sr-only">View basket</span>
-                    <%= inline_svg_tag('cart_icon.svg', class: 'h-6 w-6') %>
+                    <svg 
+                        id="trolley-icon"
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 576 512"
+                        class="h-6 w-6"
+                        fill="<%= basket_populated? ? '#14b8a6' : 'currentcolor' %>" 
+                        data-action="update-cart-icon@window->header#updateBasketIcon" 
+                        data-populated-colour="#14b8a6"
+                    >
+                        <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                    </svg>
                 <% end %>
+                <p
+                    class="pl-1"
+                    id="trolley-counter"
+                >
+                    <% if number_of_items_in_basket > 0 %>
+                        <%= number_of_items_in_basket %>
+                    <% end %>
+                </p>
                 <div class="ml-3 relative">
                     <div data-header-target="openMenu" class="relative z-10 flex items-center">
-                        <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-teal-300">
+                        <button type="button" class="rounded-md p-2 inline-flex items-center justify-center hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-teal-300">
                         <span class="sr-only">Open menu</span>
                         <%= inline_svg_tag('burger_icon.svg', class: 'block h-8 w-8') %>
                     </div>
