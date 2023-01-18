@@ -16,5 +16,10 @@ Rails.application.routes.draw do
   resources :material, only: :show
 
   resources :basket, only: :index
+  resources :basket_materials do
+    collection do
+      get :update_total_price
+    end
+  end
   delete 'basket.:id', to: 'basket#destroy'
 end

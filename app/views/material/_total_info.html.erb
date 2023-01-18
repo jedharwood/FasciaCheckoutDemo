@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "total_price_info" do %>
+  <% total_price = price * length %>
+  <div class="flex items-center justify-between">
+    <dt class="text-sm"><%= humanized_money_with_symbol(price) %> x <%= length %>m</dt>
+    <dd class="text-sm font-medium text-gray-900"><%= humanized_money_with_symbol(total_price) %></dd>
+  </div>
+  <div class="flex items-center justify-between border-t border-gray-200 pt-6">
+    <dt class="text-base">Total</dt>
+    <dd class="text-base font-medium text-gray-900">
+      <%= humanized_money_with_symbol(total_price) %>
+    </dd>
+  </div>
+<% end %>
