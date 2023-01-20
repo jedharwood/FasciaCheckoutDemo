@@ -14,11 +14,11 @@ module BasketHelper
   end
 
   def basket_populated?
-    count = BasketMaterial.all.count
-    !(count < 1)
+    count = BasketMaterial.count
+    count >= 1
   end
 
   def number_of_items_in_basket
-    BasketMaterial.all.count
+    BasketMaterial.count
   end
 end

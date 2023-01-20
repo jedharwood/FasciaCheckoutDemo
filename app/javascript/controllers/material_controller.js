@@ -1,68 +1,29 @@
 import { Controller } from '@hotwired/stimulus';
-import Swal from 'sweetalert2';
+import { get } from '@rails/request.js';
 
 export default class extends Controller {
-  static targets = ['lengthInput', 'numberOfMetres', 'materialCost', 'materialTotal'];
+  static targets = ['lengthInput', 'price'];
   HEADERS = { ACCEPT: 'application/json' };
   BASKET_PATH = '/api/basket';
 
-  showDescription(e) {
+  connect() {
+    this.updateTotalPrice()
+  }
+
+  showDescription() {
     const event = new CustomEvent("show-description-modal");
     window.dispatchEvent(event);
   }
 
-  handleInputChange() {
-    this.numberOfMetresTarget.textContent = this.getLength();
-    this.materialCostTarget.textContent = this.calculateCost();
-    this.materialTotalTarget.textContent = this.calculateCost();
+  updateTotalPrice() {
+    get(`/basket_materials/update_total_price?length=${this.getLength()}&price=${this.getPricePerMetre()}`, {responseKind: 'turbo-stream'});
   }
 
   getLength() {
     return this.lengthInputTarget.value ? this.lengthInputTarget.value : 0;
   }
 
-  calculateCost() {
-    const length = this.lengthInputTarget.value;
-    const pricePerMetreInCents = parseFloat(this.element.dataset.pricePerMetre.replace(',', ''));
-    return length ? pricePerMetreInCents * parseInt(length) : 0;
-  }
-
-  addToBasket() {
-    if (this.lengthInputTarget.value < 1) {
-      Swal.fire({
-        text: 'Please tell us how many metres you require',
-        icon: 'warning',
-        confirmButtonColor: '#f59e0b',
-      }); 
-      return;
-    }
-
-    let formData = new FormData();
-    formData.append('material_id', this.element.dataset.materialId);
-    formData.append('length', this.lengthInputTarget.value);
-
-    fetch(this.BASKET_PATH, {
-      method: 'POST',
-      headers: this.headers,
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        const event = new CustomEvent("update-cart-icon");
-        window.dispatchEvent(event);
-
-        Swal.fire({
-          text: 'Material successfully added to basket',
-          icon: 'success',
-          confirmButtonColor: '#14b8a6',
-        });
-      } else {
-        Swal.fire({
-          text: 'Something went wrong, please try again',
-          icon: 'error',
-          confirmButtonColor: '#f43f5e',
-        });
-      }
-    });
+  getPricePerMetre() {
+    return this.element.dataset.pricePerMetre
   }
 }
