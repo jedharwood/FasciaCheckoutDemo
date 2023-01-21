@@ -8,6 +8,11 @@ RSpec.describe 'Favourites', type: :request do
     @favourite = @favourites[0]
   end
 
+  before(:example, populate_materials: true) do
+    materials = instantiate_material_list(1)
+    @material = materials[0]
+  end
+
   describe 'GET /index' do
     context 'when db contains favourites', populate_favourites: true do
       it 'succeeds' do
@@ -35,30 +40,46 @@ RSpec.describe 'Favourites', type: :request do
     end
   end
 
+  describe 'POST /create' do
+    context 'when db contains materials', populate_materials: true do
+      it 'turbo stream returns correct information' do
+        post favourites_path(material_id: @material.id)
+        expect(response).to have_http_status(:ok)
+        expect(response.media_type).to eq Mime[:turbo_stream]
+        expect(response).to render_template(layout: false)
+        expect(response.body).to include(expected_turbo_stream(@material.id))
+      end
+
+      it 'increases Favourite count by 1' do
+        expect do
+          post favourites_path(material_id: @material.id)
+        end.to change(Favourite, :count).by(1)
+      end
+    end
+  end
+
   describe 'DELETE /destroy' do
     context 'when db contains favourites', populate_favourites: true do
-      it 'returns status: found' do
-        delete favourites_path(@favourite)
-        expect(response.media_type).to eq('text/html')
-        expect(response).to have_http_status(:found)
-        expect(response.status).to eq(302)
+      it 'turbo stream returns correct information' do
+        delete favourite_path(@favourite)
+        expect(response).to have_http_status(:ok)
+        expect(response.media_type).to eq Mime[:turbo_stream]
+        expect(response).to render_template(layout: false)
+        expect(response.body).to include(expected_turbo_stream(@favourite.material_id))
       end
 
       it 'decreases Favourite count by 1' do
         expect do
-          delete favourites_path(@favourite)
+          delete favourite_path(@favourite)
         end.to change(Favourite, :count).by(-1)
-      end
-
-      it 'shows a success message' do
-        delete favourites_path(@favourite)
-        expect(flash[:success]).to eq("#{@favourite.material.name} removed from favourites")
-      end
-
-      it 'redirects to favourites_path' do
-        delete favourites_path(@favourite)
-        expect(response).to redirect_to(favourites_path)
       end
     end
   end
+end
+
+private
+
+def expected_turbo_stream(id)
+  favourite_star_id = "favourite_star_#{id}"
+  '<turbo-stream action="replace" target="' + favourite_star_id + '"><template><turbo-frame id="' + favourite_star_id + '"'
 end
