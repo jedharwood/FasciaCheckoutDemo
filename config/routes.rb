@@ -5,13 +5,11 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :api do
-    resources :favourites, only: %i[create destroy]
     resources :basket, only: :create
     get 'basket/basket_material_count', to: 'basket#basket_material_count'
   end
 
-  resources :favourites, only: :index
-  delete 'favourites.:id', to: 'favourites#destroy'
+  resources :favourites, only: %i[index create destroy]
 
   resources :material, only: :show
 

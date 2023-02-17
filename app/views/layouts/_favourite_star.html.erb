@@ -1,0 +1,12 @@
+<%= turbo_frame_tag "favourite_star_#{material.id}" do %>
+    <% if favourited %>
+        <%= button_to favourite_path(favourite), method: :delete, class: "text-teal-500" do %>
+            <%= inline_svg_tag('star_icon.svg') %>
+        <% end %>
+    <% else %>
+        <%= button_to favourites_path(material_id: material.id), method: :post, class: "text-transparent" do %>
+            <%= inline_svg_tag('star_icon.svg') %>
+        <% end %>
+    <% end %>
+<% end %>
+
